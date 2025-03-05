@@ -16,6 +16,7 @@ function start() {
 
 function nextBoard() {
     // keep old ball values for the sake of efficient clearing of the old display
+    const oldBall = old
 
     // handle ball is hitting the bounds
     //   reverse direction
