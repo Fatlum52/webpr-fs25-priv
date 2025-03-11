@@ -178,7 +178,7 @@
 
     const id = y => y;
     const fst = x => y => x;
-    const snd = foo;
+    const snd = fst (id);
 
     const x_ = Math.random();
     const y_ = Math.random();
