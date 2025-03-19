@@ -9,6 +9,12 @@ function start() {
     const canvas       = document.getElementById('canvas');
 
     // todo: how to display?
+    const f = () => Function("x", "return " + userFunction.value);
+
+    //display(canvas, x => eval(userFunction.value));
+    display(canvas, f());
+
+    userFunction.onchange = evt => display(canvas, f());
 
 }
 
