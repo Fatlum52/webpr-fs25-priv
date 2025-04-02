@@ -8,14 +8,25 @@
 //   proceed(stride) // proceed so many places
 //   fallback()      // "oopsie": go back to last start (fallback position)
 //   turn()          // cash in your win, update fallback position for next turn
-// 
+
+function Player(name) {
+    let fallbackIndex = 0;
+    let progressIndex = 0;
+    return {
+        getProgressIndex() { return progressIndex; },
+        getFallbackIndex() { return fallbackIndex; },
+        proceed(stride) { progressIndex += stride; },
+        fallback() { progressIndex = fallbackIndex; },
+        turn() { fallbackIndex = progressIndex; }
+    }
+}
 
 function start() {
     const fields = document.getElementById('fields');
 
     for (let i = 0; i < 100; i++) {
         const field = document.createElement("DIV");
-        field.setAttribute("ID", "FIELD-"+i);
+        field.setAttribute("ID", "FIELD-" + i);
         field.textContent = " ";
         fields.appendChild(field);
     }
@@ -23,8 +34,8 @@ function start() {
 }
 
 function dice() {
-    const stride                              = Math.round(1 + Math.random() * 5);
-    document.getElementById('dice').innerText = ""+ stride;
+    const stride = Math.round(1 + Math.random() * 5);
+    document.getElementById('dice').innerText = "" + stride;
     if (stride === 3) {
         player.fallback();
     } else {

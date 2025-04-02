@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz Woche 3</title>
+</head>
+<body>
+<script>
+
+    const Person = name => {
+        let age = 0;
+        return {
+            getAge: ()       => age,
+            setAge: newAge   => age = newAge,
+            getName: ()      => name,
+            setName: newName => name = newName
+        }
+    };
+
+    const me = Person("Myself");
+    me.name = "***";
+    document.writeln(me.getName() === "***");
+
+</script>
+</body>
+</html>
+
