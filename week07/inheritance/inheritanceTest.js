@@ -10,7 +10,7 @@
             this.worklog = [];
         }
         mustDo() { // design pattern: template method
-            return ""
+            return "";
         }
         work() {
             this.worklog.push(this.mustDo());
