@@ -8,11 +8,48 @@
 
 <script>
 
-    const foo = arg => {
-        return (arg + 1);
-    };
+    /**
+     * Increases the arg by one arithmetically
+     * @param  { Number | "42" | "0" | Boolean } arg
+     * @return { Number | String }
+     */
+    const foo = arg => arg + 1;
 
-    document.writeln( foo(42) );
+    document.writeln( String(foo(42)) + " |~| " );
+    document.writeln( foo(true)  + " |~| " );
+    document.writeln( foo("42")  + " |~| " );
+    document.writeln( foo("42")  + " |~| " );
+    document.writeln( foo("0")   + "  |~| " );
+    document.writeln( foo("133") + " |~| " );
+
+    /**
+     * @typedef PersonType
+     * @property { String } firstname
+     * @property { String } lastname
+     */
+    const dk = { firstname: "Fatlum", lastname: "Cikaqi" };
+
+    /**
+     * @type { Array<PersonType> }
+     */
+    const people = [ dk, dk ];
+
+    /**
+     * @typedef CoolType
+     * @property { String } cf
+     */
+
+    /**
+     *
+     * @param {PersonType & CoolType } arg
+     */
+
+    /**
+     * a second way (Duck typing, design by )
+     * @param { {firstname:String, cf:String} } arg
+     */
+    const print = arg => document.writeln(arg.firstname, arg.cf + " |~| ");
+
 
 </script>
 

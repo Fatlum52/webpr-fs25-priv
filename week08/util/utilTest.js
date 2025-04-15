@@ -21,7 +21,7 @@
     const ok = [];
 
     const number = /** @type { INumber } */ 10;  // example with intersection type
-    const collect = number.times( n => n+1 );
+    const collect = number.times( n => n + 1 );
 
     ok.push(collect.length === 10);
     ok.push(collect[0]     ===  1);

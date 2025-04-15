@@ -7,9 +7,21 @@
 <body>
 <script>
 
-    const e = {revenue: 1000, bonus: null}
+    const inc = x => x + 1;
+    const double = x => x * 2;
+
+    Function.prototype.then = function (func) {
+        const f = this;
+        return function (x) {
+            return func(f(x));
+        }
+    };
+
+    const res = inc.then(double).then(double) (1);
+    document.writeln(res);
 
 </script>
+
 </body>
 </html>
 
