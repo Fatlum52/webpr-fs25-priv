@@ -8,47 +8,48 @@
 
 <script>
 
+
+
     /**
-     * Increases the arg by one arithmetically
-     * @param  { Number | "42" | "0" | Boolean } arg
+     * increases the arg by one arithmetically
+     * @param  { Number | "42" | "0" } arg -
      * @return { Number | String }
      */
-    const foo = arg => arg + 1;
+    const foo = arg => {
+        return (arg + 1);
+    };
 
-    document.writeln( String(foo(42)) + " |~| " );
-    document.writeln( foo(true)  + " |~| " );
-    document.writeln( foo("42")  + " |~| " );
-    document.writeln( foo("42")  + " |~| " );
-    document.writeln( foo("0")   + "  |~| " );
-    document.writeln( foo("133") + " |~| " );
+
+
+    document.writeln( String(foo(42)) );
+    // document.writeln( foo(true) ); // should fail type check
+    document.writeln( foo("42") );
+    document.writeln( foo("0") );
+    // document.writeln( foo("1") ); // should fail type check
 
     /**
      * @typedef PersonType
      * @property { String } firstname
      * @property { String } lastname
      */
-    const dk = { firstname: "Fatlum", lastname: "Cikaqi" };
+    const dk = { firstname: "Dierk", lastname: "König"};
 
-    /**
-     * @type { Array<PersonType> }
-     */
+    /** @type { Array<PersonType> } */
     const people = [ dk, dk ];
 
     /**
      * @typedef CoolType
-     * @property { String } cf
+     * @property  {String} cf
+     */
+    /**
+     * @param { PersonType & CoolType} arg
+     */
+    /**
+     * a second way (Duck typing, design by capability)
+     * @param { {firstname:String, cf:String}  } arg
      */
 
-    /**
-     *
-     * @param {PersonType & CoolType } arg
-     */
-
-    /**
-     * a second way (Duck typing, design by )
-     * @param { {firstname:String, cf:String} } arg
-     */
-    const print = arg => document.writeln(arg.firstname, arg.cf + " |~| ");
+    const print = arg => document.writeln(arg.firstname, arg.cf);
 
 
 </script>
