@@ -6,12 +6,66 @@
 </head>
 <body>
 
-<div id="out"></div>
+<div id="out">Hey</div>
+<p></p>
+<p></p>
+<p></p>
+
+
+<div>
+    <label for="pokemonCount">Anzahl Pokemons: </label>
+    <input type="number" id="pokemonCount" value="10" min="1">
+    <button onClick="pokename()"> Pokemon-Name abrufen </button>
+    <div id="pokeOut"> Pokemons </div>
+</div>
 
 <script>
+
+    /**
+     * @typedef Todo Type
+     * @property {Number} id      - primary key
+     * @property {Number} userId  - foreign key
+     * @property {String} title
+     * @property {Boolean} completed
+     */
     // Example
+    /**
+     * @type {(todo:TodoType) => * }
+     * @param todo
+     * @returns {*}
+     */
+    const show = todo => out.textContent = todo.title;
 
     // 'https://jsonplaceholder.typicode.com/todos/1'
+
+    //fetch('https://jsonplaceholder.typicode.com/todos/1')
+    //    .then(resp => resp.json())
+    //    .then(show);
+
+    const foo = async () => {
+        const resp = await fetch('https://jsonplaceholder.typicode.com/todos/1');
+        const todo = await resp.json();
+
+    };
+
+
+
+
+
+
+    const anzahlPokemons = parseInt(document.getElementById('pokemonCount').value, 10);
+
+    const url = `https://pokeapi.co/api/v2/pokemon?limit=${anzahlPokemons}`;
+
+    const pokename = function () {
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                const pokeNames = data.results.map(pokemon => pokemon.name);
+                document.getElementById('pokeOut').innerHTML = '<p>${pokeNames}</p>';
+            })
+            .catch(err => console.log(err));
+    }
 
 
 </script>
