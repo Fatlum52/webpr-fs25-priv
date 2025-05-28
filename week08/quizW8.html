@@ -8,21 +8,14 @@
 
 <script>
 
-    function handle(count, callback) {
+    function handle(callback) {
         const result = [];
         callback(result);
         return result;
     }
-    let it = [];
-    document.writeln( handle( it => it.push(1) ).length === 1 );
 
+    document.writeln( handle( it => it.push(1) ).length === 1 )
 
-    const NullSafe = (x) => {
-    const isNullSafe = (y) => y && typeof y.then === 'function';
-    return {
-        maywrap: (fn) => isNullSafe(x) ? NullSafe(fn(x)) : NullSafe(null)
-    };
-};
 
 </script>
 
