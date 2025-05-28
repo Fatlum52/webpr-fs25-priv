@@ -5,7 +5,21 @@
 </head>
 <body>
 <script>
+    const numStream = (startValue, whileFn, incFn) => {
+        return {
+            [Symbol.iterator]: () => ({
+                next: () => ({value: startValue = incFn(startValue), done: !whileFn(startValue)})
+            })
+        };
+    };
+    for (const n of numStream(10, n => n <= 16, n => n + 1)) {
+        document.writeln(" " + n);
+    }
 
+    const [a, b, c] = numStream(1000, n => true, n => n * 1.1);
+    document.writeln(" " + a);
+    document.writeln(" " + b);
+    document.writeln(" " + c);
 </script>
 </body>
 </html>
