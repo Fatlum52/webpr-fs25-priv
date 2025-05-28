@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title> wq8 </title>
+    <script src="util/test.js"></script>
+</head>
+<body>
+
+<script>
+
+    function handle(count, callback) {
+        const result = [];
+        callback(result);
+        return result;
+    }
+    let it = [];
+    document.writeln( handle( it => it.push(1) ).length === 1 );
+
+
+    const NullSafe = (x) => {
+    const isNullSafe = (y) => y && typeof y.then === 'function';
+    return {
+        maywrap: (fn) => isNullSafe(x) ? NullSafe(fn(x)) : NullSafe(null)
+    };
+};
+
+</script>
+
+</body>
+</html>
