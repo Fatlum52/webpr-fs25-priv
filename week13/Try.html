@@ -7,7 +7,31 @@
 
 <h1>Try</h1>
 
+<label for="inputId">our input: </label>
+<input id="inputId">
+<output id="syncOutId"></output>
+<output id="lengthId"></output>
+<output id="changeCountId"></output>
+
+
 <script>
+
+    const Observable = _initialValue => {
+        const callbacks = [];
+        const setValue = newValue => callbacks.forEach(cb => cb(newValue));
+        const onChange = callback => callbacks.push(callback);
+
+        return { setValue, onChange }
+    };
+    const obs = Observable("");
+    inputId.oninput = _event => obs.setValue(inputId.value);
+    obs.onChange(value => syncOutId.textContent = value);
+    obs.onChange(value => lengthId.textContent = value.length);
+
+    let count = 0;
+    obs.onChange(_value => changeCountId.textContent = count++);
+
+
 
 
 </script>
